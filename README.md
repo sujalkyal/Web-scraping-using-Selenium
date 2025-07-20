@@ -1,15 +1,49 @@
-I tackled the task of automating web data retrieval from the Sauce Demo website. Here's a concise summary:
+# Sauce Demo Web Scraping Automation
 
+This project automates the retrieval of inventory data from the [Sauce Demo](https://www.saucedemo.com/) website using Selenium.
 
-    Setup: Configured the development environment with Selenium and dotenv.
+## Features
 
-    Automation: Used Selenium to automate login, handle CAPTCHA challenges, and retrieve inventory data.
+- **Automated Login:** Uses credentials from environment variables for secure authentication.
+- **CAPTCHA Handling:** Detects CAPTCHA and prompts for manual resolution if present.
+- **Data Extraction:** Scrapes item names and descriptions from the inventory page.
+- **Robust Error Handling:** Handles login errors, asynchronous loading, and missing elements gracefully.
+- **Data Storage:** Saves the retrieved data to `data_retrieved.csv` in a tabular format.
 
-    Challenges: Addressed issues with CAPTCHA detection and asynchronous loading.
+## Setup
 
-    Solutions: Implemented robust error handling and user prompts for manual intervention.
+1. **Install Dependencies:**
+   - Python 3.x
+   - `selenium`
+   - `python-dotenv`
+   - `pandas`
+2. **Download ChromeDriver:**  
+   Download the appropriate ChromeDriver for your system and update the path in `solution.py`.
+3. **Create a `.env` File:**  
+   Add your Sauce Demo credentials:
+   ```
+   SAUCEDemo_USERNAME=your_username
+   SAUCEDemo_PASSWORD=your_password
+   ```
+4. **Run the Script:**
+   ```
+   python solution.py
+   ```
 
-    Outcome: Successfully created a reliable and user-friendly automation script for data retrieval.
-    
+## How It Works
 
-This approach ensured efficient and accurate retrieval of inventory data while handling potential challenges seamlessly.
+- The script loads credentials from `.env`.
+- It launches Chrome, logs in, and checks for CAPTCHA.
+- If CAPTCHA is detected, you are prompted to solve it manually.
+- After successful login, it scrapes inventory items and descriptions.
+- The data is saved to `data_retrieved.csv`.
+
+## Notes
+
+- If login fails, an error message is displayed.
+- Manual intervention is required if CAPTCHA appears.
+- The script ensures the browser is closed after execution.
+
+## License
+
+This project is for educational and personal use.
